@@ -1,158 +1,182 @@
-* {
-  box-sizing:border-box;
+@import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
+
+/* Met :root kun je variabelen voor kleur vastzetten. */
+:root {
+  --background: #27005D;
+  --accent: #AED2FF;
+  --accent2: #E4F1FF;
+  --text: #F4F4F4;
+  --black: #2C2C2C;
+  --white: #F4F4F4;
 }
-html {
-  height:100vh;
-}
+
 body {
-  height:100vh;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  color:#10214e;
+  /* Margin zorgt ervoor dat er geen extra ruimte om de body is, zodat alles goed aansluit aan de rand van het venster. */
+  margin: 0;
+  background-color: var(--background);
+  font-family: 'Quicksand', sans-serif;
 }
 
-article {
-  width:50vw;
-  max-width: 25em;
-  min-width:20em;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:flex-end;
-  background: rgb(0,239,255);
-  background: linear-gradient(0deg, rgba(0,239,255,1) 40%, #4e54c8 100%);
-  box-shadow:0 0 20px 20px rgba(0,0,0,.1);
-  border-radius:1rem;
-  position: relative;
-  transition:.25s;
+.main-container {
+  display: flex;
+  gap: 16px;
 }
 
-header {
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  justify-content:flex-end;
-  
-}
-h1 {
-  margin:2rem 0 1rem;
-  color: rgba(0,239,255,1);
-}
-button {
-  border:none;
-  position: absolute;
-  right:1rem;
-  top:1rem;
-  width:2.5rem;
-  height:2.5rem;
-  transform: scale(.8);
-  background: rgba(0,239,255,1);
-  border-radius:50%;
-  padding:.25rem;
-  transition:.25s;
-}
-button:focus {
-  outline:none;
-  background:#202592;
-}
-button:focus svg {
-  stroke: rgba(0,239,255,1);
+.praat {
+  /* height zorgt er hier voor dat de verplaatsende tekst geheel van boven naar beneden te zien is. */
+  height: 100vh;
+  /* width zorgt er hier voor dat de zijwaartse tekst maar 30% van het venster inneemt in de breedte. */
+  width: 30%;
+  overflow: hidden;
 }
 
-svg {
-  stroke: #4e54c8;
-  position: absolute;
-  top:calc(1.25rem - 12px);
-  left:calc(1.25rem - 12px);
-  transition-delay: .25s;
+.big {
+  display: flex;
+  /* Align items zorgt ervoor dat alle items in dit geval in het midden worden uitgelijnd. */
+  align-items: center;
+  transform: rotate(-90deg);
+  margin-left: -5em;
 }
-button svg:nth-of-type(2) {
-  opacity:0;
-  transition-delay: 0;
+
+.scroll {
+  white-space: nowrap;
+  margin: 0 2em;
 }
-h2 {
-  
+
+.scroll div {
+  display: flex;
+  gap: 2em;
 }
-img {
-  width:10em;
-  border-radius:10em;
-  border:5px solid #fff;
-  box-shadow:0 0 2px 2px rgba(0,0,0,.2);
-  position:relative;
-  top:2rem;
-  transition:.25s .15s;
-}
-dl {
-  width:100%;
-  background: rgb(255,255,255);
-  
-  display:grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-areas:
-    "html-dd css-dd js-dd"
-    "html-dt css-dt js-dt"
-    ;
-  justify-items:center;
-  align-items:start;
-  padding:5rem 0 3rem;
-  margin-top: -3rem;
-  margin-bottom: 0;
-  text-align: center;
-}
-dt{
+
+.scroll p {
+  /* font size bepaalt de grootte van de tekst (het font). */
+  font-size: 10em;
+  color: var(--text);
   font-weight: bold;
-  border-top: 1px solid rgba(0,0,0,0.3);
-  padding-top: .25rem;
-  margin-top: .25rem;
-}
-dt:nth-of-type(1){ grid-area: html-dt; }
-dt:nth-of-type(2){ grid-area: css-dt; transform: translateY(1rem);}
-dt:nth-of-type(3){ grid-area: js-dt; }
-
-dd {
-  margin:0;
-  padding-left:.3rem;
-  transition:.25s .3s;
-}
-dd:nth-of-type(2){  
-  transform: translateY(1rem);
+  margin-bottom: 0;
+  /* line height zegt iets over de ruimte tussen elke line tekst. */
+  line-height: 10px;
 }
 
-p { 
-  margin:0
+.right-to-left {
+  animation: RightToLeft 300s infinite linear;
 }
 
-article > p {
-  padding:3rem 2rem;
+@keyframes  RightToLeft {
+  from {
+    transform: translateX(-10%);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.left-to-right {
+  animation: LeftToRight 300s infinite linear;
+}
+
+@keyframes  LeftToRight {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0%);
+  }
+}
+
+.main {
+  width: 60%;
+  display: flex;
+  align-items: center;
+}
+
+.tile-container {
+  /* display zegt iets over hoe je de content displayed: in dit geval in een grid. */
+  display: grid;
+  grid-template-columns: repeat(2, 25vw);
+  gap: 16px;
+}
+
+.tile {
+  /* background color zegt iets over de achtergrond kleur van in dit geval de tiles */
+  background-color: var(--white);
+  /* border radius zegt iets over hoe strak de hoek is, hoe meer px hoe ronder. */
+  border-radius: 20px;
+  margin: 2em;
+  /* text align -> center zet de tekst in het midden */
+  text-align: center;
+  padding: 0.5em;
+  padding-top: 4em;
+  /* positie zegt iets over de positie, haha. relatief is variabel en hangt af van de parens, relatief staat hij echt op zichzelf en vast. */
+  position: relative;
+  /* font weight zegt iets over hoe dik de tekst is */
+  font-weight: 600;
+  font-size: 1.5em;
+}
+
+.tile__overview {
   margin-top: 0;
-  background:rgba(255,255,255, 0.5);
-  text-align:center;
-  border-radius: 0 0 1rem 1rem;
-  width:100%;
 }
 
-/* expand content */
-body.expand {
-  font-size:1.15em;
+.tile__description {
+  display: none;
+  /* hocus pocus, regel de overflow automatisch! */
+  overflow: auto;
 }
-body.expand article {
-  width:60vw;
-  max-width: 60vw;
+
+.tile__button {
+  font-size: 3em;
+  background-color: transparent;
+  border: none;
+  width: 64px;
+  transition: all .1s ease-in;
+  cursor: pointer;
 }
-body.expand button svg:first-of-type {
-  opacity:0;
-  transition-delay: 0;
+
+.tile__emoji {
+  background-color: var(--accent2);
+  border-radius: 16px;
+  padding: 10px;
+  font-size: 2em;
+  position: absolute;
+  top: -.7em;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: 64px;
 }
-body.expand button svg:nth-of-type(2) {
-  opacity:1;
-  transition-delay:.25s;
+
+.tile__button:hover {
+  transform: scale(1.2);
 }
-body.expand dd {
-  font-size: 1.75em;
+
+.tile--fullscreen {
+  position: absolute;
+  z-index: 5;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-body.expand img {
-  width:15em;
+
+.tile--fullscreen .tile__button {
+  /* iets van een transformatie met wat je select, in dit geval flipt de button */
+  transform: scaleX(-1);
+}
+
+.tile--fullscreen .tile__button:hover {
+    /* hier hetzelfde als regel 163 maar dan flip en scale grow! */
+  transform: scaleX(-1) scale(1.2);
+}
+
+.tile--fullscreen .tile__overview {
+  display: none;
+}
+
+.tile--fullscreen .tile__description {
+  display: unset;
+}
+
+.header {
+  color: var(--text);
 }
