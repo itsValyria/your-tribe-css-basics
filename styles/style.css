@@ -1,38 +1,256 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
 
-/* Met :root kun je variabelen voor kleur vastzetten. */
 :root {
-  --background: #27005D;
-  --accent: #AED2FF;
-  --accent2: #E4F1FF;
+  --background: #36ffe460;
+  --accent: #80ae9f;
+  --accentdark: #d8eee6;
   --text: #F4F4F4;
   --black: #2C2C2C;
-  --white: #F4F4F4;
+  --white: #ffffff;
 }
 
 body {
-  /* Margin zorgt ervoor dat er geen extra ruimte om de body is, zodat alles goed aansluit aan de rand van het venster. */
+  /* MARGIN: Zegt iets over de ruimte aan de buitenkant. */
   margin: 0;
+  /* BACKGROUND-COLOR: Zegt iets over de achtergrond kleur. */
   background-color: var(--background);
+  /* FONT-FAMILY: Zegt iets over welk font gebruikt wordt op de webiste. */
   font-family: 'Quicksand', sans-serif;
+  background-image: url('../assets/background.jpeg');
+  background-size: cover;
+  animation: slidein 100s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;         
 }
 
-.main-container {
-  display: flex;
-  gap: 16px;
+@-webkit-keyframes slidein {
+from {background-position: top; background-size:3000px; }
+to {background-position: -100px 0px;background-size:2750px;}
 }
+
+@keyframes slidein {
+from {background-position: top;background-size:3000px; }
+to {background-position: -100px 0px;background-size:2750px;}
+}
+
+.main__container {
+  background: #30f2db2a;
+  display: flex;
+  /* HEIGHT: Zegt iets over de hoogte van de website. */
+  height: 100vh;
+  /* JUSTIFY-CONTENT: Zegt iets over hoe de content horizontaal aligned wordt. */
+  justify-content: center;
+  /* ALIGN-ITEMS: Zegt iets over hoe de content verticaal aligned wordt. */
+  align-items: center;
+}
+
+.main__img {
+  /* BORDER-RADIUS: Zegt iets over hoe rond de border is. */
+  border-radius: 8px;
+  /* BOX-SHADOW: Zegt iets over de schaduw. */
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.203);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main__left {
+  /* WIDTH: Zegt iets over de breedte. */
+  width: 40%;
+  display: flex;
+  justify-content: left;
+}
+
+.main__right {
+  width: 60%;
+  margin-left: 2em;
+}
+
+.name {
+  /* FONT-SIZE: Zegt iets over de grootte van de tekst. */
+  font-size: 3em;
+  margin-bottom: 0;
+  margin-top: 0;
+  /* TEXT-SHADOW: Zegt iets over de shadow van de tekst. */
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.203);
+}
+
+.name2 {
+  font-size: 1.1em;
+  margin-bottom: 0.5em;
+  margin-top: 0em
+}
+
+.tile {
+  background-color: var(--white);
+  width: 60vw;
+  height: 55vh;
+  border-radius: 8px;
+  margin: auto;
+  display: flex;
+  justify-content: space-around;
+  /* PADDING: Zegt iets over de ruimte aan de binnenkant. */
+  padding: 2em;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.203);
+}
+
+.abtimg {
+  width: 32px;
+  height: 32px;
+}
+
+.main__abt {
+  display: flex;
+  align-items: center;
+  /* Zegt iets over de ruimte tussen in dit geval twee sections/divs. */
+  gap: 20px;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.footer {
+  /* Zegt iets over de positie. */
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  opacity: .7;
+}
+
+.footer__text {
+  font-size: .7em;
+  padding: 1em;
+  line-height: 8px;
+  color: var(--text);
+}
+
+.footer__icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5em;
+  padding: 1em;
+}
+
+.header {
+  color: var(--text);
+}
+
+.icon {
+  stroke: var(--text);
+  stroke-width: 1.5;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.footer__icons > a {
+  width: 30px;
+  height: 30px;
+}
+
+.container{
+  position: relative;
+  max-width: 500px;
+  width: 100%;
+  background: var(--accentdark);
+  margin: 0;
+  margin-top: 0.1em;
+  padding: 10px 20px;
+  border-radius: 7px;
+}
+.container .skill-box{
+  width: 100%;
+  margin: 25px 0;
+}
+.skill-box .title{
+  display: block;
+  font-size: 16px;
+  font-weight: bold;
+  color: var(--black);
+}
+.skill-box .skill-bar{
+  height: 8px;
+  width: 100%;
+  border-radius: 6px;
+  margin-top: 6px;
+  background: rgba(0,0,0,0.1);
+}
+.skill-bar .skill-per{
+  position: relative;
+  display: block;
+  height: 100%;
+  width: 40%;
+  border-radius: 6px;
+  background: var(--accent);
+  animation: progress 0.4s ease-in-out forwards;
+  opacity: 0;
+}
+.skill-per.css{
+  width: 30%;
+  animation-delay: 0.1s;
+}
+.skill-per.javascript{
+  width: 20%;
+  animation-delay: 0.2s;
+}
+.skill-per.nodejs{
+  width: 30%;
+  animation-delay: 0.3s;
+}
+@keyframes progress {
+  0%{
+      width: 0;
+      opacity: 1;
+  }
+  100%{
+      opacity: 1;
+  }
+}
+.skill-per .tooltip{
+  position: absolute;
+  right: -14px;
+  top: -28px;
+  font-size: 9px;
+  font-weight: bold;
+  color: #fff;
+  padding: 2px 6px;
+  border-radius: 3px;
+  background: var(--accent);
+  z-index: 1;
+}
+.tooltip::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -2px;
+  height: 10px;
+  width: 10px;
+  z-index: -1;
+  background-color: var(--accent);
+  transform: translateX(-50%) rotate(45deg);
+}
+
+/* DIT IS DE TEXT SCROLL */
 
 .praat {
-  /* height zorgt er hier voor dat de verplaatsende tekst geheel van boven naar beneden te zien is. */
   height: 100vh;
-  /* width zorgt er hier voor dat de zijwaartse tekst maar 30% van het venster inneemt in de breedte. */
   width: 30%;
   overflow: hidden;
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
 }
 
 .big {
   display: flex;
-  /* Align items zorgt ervoor dat alle items in dit geval in het midden worden uitgelijnd. */
   align-items: center;
   transform: rotate(-90deg);
   margin-left: -5em;
@@ -49,17 +267,19 @@ body {
 }
 
 .scroll p {
-  /* font size bepaalt de grootte van de tekst (het font). */
-  font-size: 10em;
-  color: var(--text);
-  font-weight: bold;
-  margin-bottom: 0;
-  /* line height zegt iets over de ruimte tussen elke line tekst. */
-  line-height: 10px;
+  text-shadow: 4px 4px 4px rgba(0, 0, 0, .075);
 }
 
+.scroll p {
+  font-size: 10em;
+  color: rgba(255, 255, 255, 0.61);
+  font-weight: bold;
+  margin-bottom: 0;
+  line-height: 10px;
+} 
+
 .right-to-left {
-  animation: RightToLeft 300s infinite linear;
+  animation: RightToLeft 700s infinite linear;
 }
 
 @keyframes  RightToLeft {
@@ -72,7 +292,7 @@ body {
 }
 
 .left-to-right {
-  animation: LeftToRight 300s infinite linear;
+  animation: LeftToRight 700s infinite linear;
 }
 
 @keyframes  LeftToRight {
@@ -82,101 +302,4 @@ body {
   to {
     transform: translateX(0%);
   }
-}
-
-.main {
-  width: 60%;
-  display: flex;
-  align-items: center;
-}
-
-.tile-container {
-  /* display zegt iets over hoe je de content displayed: in dit geval in een grid. */
-  display: grid;
-  grid-template-columns: repeat(2, 25vw);
-  gap: 16px;
-}
-
-.tile {
-  /* background color zegt iets over de achtergrond kleur van in dit geval de tiles */
-  background-color: var(--white);
-  /* border radius zegt iets over hoe strak de hoek is, hoe meer px hoe ronder. */
-  border-radius: 20px;
-  margin: 2em;
-  /* text align -> center zet de tekst in het midden */
-  text-align: center;
-  padding: 0.5em;
-  padding-top: 4em;
-  /* positie zegt iets over de positie, haha. relatief is variabel en hangt af van de parens, relatief staat hij echt op zichzelf en vast. */
-  position: relative;
-  /* font weight zegt iets over hoe dik de tekst is */
-  font-weight: 600;
-  font-size: 1.5em;
-}
-
-.tile__overview {
-  margin-top: 0;
-}
-
-.tile__description {
-  display: none;
-  /* hocus pocus, regel de overflow automatisch! */
-  overflow: auto;
-}
-
-.tile__button {
-  font-size: 3em;
-  background-color: transparent;
-  border: none;
-  width: 64px;
-  transition: all .1s ease-in;
-  cursor: pointer;
-}
-
-.tile__emoji {
-  background-color: var(--accent2);
-  border-radius: 16px;
-  padding: 10px;
-  font-size: 2em;
-  position: absolute;
-  top: -.7em;
-  left: 0;
-  right: 0;
-  margin: 0 auto;
-  width: 64px;
-}
-
-.tile__button:hover {
-  transform: scale(1.2);
-}
-
-.tile--fullscreen {
-  position: absolute;
-  z-index: 5;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.tile--fullscreen .tile__button {
-  /* iets van een transformatie met wat je select, in dit geval flipt de button */
-  transform: scaleX(-1);
-}
-
-.tile--fullscreen .tile__button:hover {
-    /* hier hetzelfde als regel 163 maar dan flip en scale grow! */
-  transform: scaleX(-1) scale(1.2);
-}
-
-.tile--fullscreen .tile__overview {
-  display: none;
-}
-
-.tile--fullscreen .tile__description {
-  display: unset;
-}
-
-.header {
-  color: var(--text);
 }
